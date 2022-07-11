@@ -6,8 +6,8 @@ import com.writerai.data.models.response.UserResponse
 
 class UserRepo(private val userDataSource: UserDataSource) {
 
-    suspend fun insertUser(username: String, email: String): Response<UserResponse> {
-        val user = userDataSource.insertUser(username, email).toResponse()
+    suspend fun insertUser(id:String, username: String, email: String): Response<UserResponse> {
+        val user = userDataSource.insertUser(id, username, email).toResponse()
         return Response.Success(user, "User Saved successfully")
     }
 

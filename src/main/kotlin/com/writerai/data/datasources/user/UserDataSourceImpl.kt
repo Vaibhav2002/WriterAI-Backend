@@ -13,8 +13,8 @@ class UserDataSourceImpl : UserDataSource {
         transaction { SchemaUtils.create(UserTable) }
     }
 
-    override suspend fun insertUser(username: String, email: String): User = newSuspendedTransaction(IO) {
-        User.new {
+    override suspend fun insertUser(id:String, username: String, email: String): User = newSuspendedTransaction(IO) {
+        User.new(id) {
             this.username = username
             this.email = email
         }

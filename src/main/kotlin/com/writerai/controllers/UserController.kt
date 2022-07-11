@@ -5,17 +5,17 @@ import com.writerai.data.repo.UserRepo
 
 class UserController(private val repo: UserRepo) {
 
-    suspend fun insertUser(username: String?, email: String?) = if (username.isNullOrEmpty() || email.isNullOrEmpty()) {
+    suspend fun insertUser(id:String?, username: String?, email: String?) = if (id.isNullOrEmpty()|| username.isNullOrEmpty() || email.isNullOrEmpty()) {
         Response.Error("Data cannot be null or empty")
     } else {
         try {
-            repo.insertUser(username, email)
+            repo.insertUser(id, username, email)
         } catch (e: Exception) {
-            Response.Error("User already exists")
+            Response.Error(e.message.toString())
         }
     }
 
-    suspend fun findUser(id: String?, email: String?) = when {
+    suspend fun findUser(id: String?, email: String? = null) = when {
         id.isNullOrEmpty() && email.isNullOrEmpty() -> Response.Error("Either pass id or email")
         !id.isNullOrEmpty() && !email.isNullOrEmpty() -> Response.Error("Only 1 from id or email should be passed")
         !id.isNullOrEmpty() -> repo.getUserById(id)
