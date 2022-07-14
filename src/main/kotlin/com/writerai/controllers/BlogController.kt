@@ -21,7 +21,7 @@ class BlogController(private val repo: BlogRepo) {
         userId: String?,
         blogId: Int?, blogRequest: BlogRequest
     ) = if (userId.isNullOrEmpty() || blogId == null) Response.Error(ALL_EMPTY)
-    else repo.insertBlog(userId, blogRequest).mapToResponse()
+    else repo.updateBlog(userId, blogId, blogRequest).mapToResponse()
 
 
     suspend fun deleteBlog(userId: String?, blogId: Int?) =
