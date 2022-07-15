@@ -1,17 +1,25 @@
 package com.writerai.data.db
 
-import com.writerai.data.db.DatabaseSecrets.PASSWORD
-import com.writerai.data.db.DatabaseSecrets.URL
-import com.writerai.data.db.DatabaseSecrets.USERNAME
 import org.jetbrains.exposed.sql.Database
 
 object DatabaseConfig {
-    val db by lazy {
+    private lateinit var url: String
+    private lateinit var username: String
+    private lateinit var password: String
+
+    fun init(url:String, username:String, password:String){
+        this.url = url
+        this.username = username
+        this.password = password
+        db
+    }
+
+    private val db by lazy {
         Database.connect(
-            url = URL,
+            url = url,
             driver = "com.mysql.cj.jdbc.Driver",
-            user = USERNAME,
-            password = PASSWORD,
+            user = username,
+            password = password,
         )
     }
 }
