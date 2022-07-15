@@ -17,7 +17,8 @@ sealed class Response<T>(
     data class Error<T>(
         override val message: String = "",
         override val status: Int = 400,
-    ) : Response<T>(status, null, message)
+        override val data:T? =null
+    ) : Response<T>(status, data, message)
 
     fun serialize(): SerializedResponse<T> = SerializedResponse(status, data, message)
 

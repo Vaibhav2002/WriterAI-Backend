@@ -14,17 +14,19 @@ class BlogDataSourceImpl : BlogDataSource {
 
 
     init {
-        transaction { SchemaUtils.create(BlogTable) }
+        transaction {
+            SchemaUtils.create(BlogTable)
+        }
     }
 
     override suspend fun insertBlog(userId: String, blogRequest: BlogRequest) = newSuspendedTransaction {
-        val user = User.findById(userId) ?: return@newSuspendedTransaction null
+        User.findById(userId) ?: return@newSuspendedTransaction null
         Blog.new {
             title = blogRequest.title
             description = blogRequest.description
             content = blogRequest.content
             timeStamp = blogRequest.timeStamp
-            this.user = user
+            this.userId = userId
         }
     }
 
@@ -45,7 +47,7 @@ class BlogDataSourceImpl : BlogDataSource {
 
     override suspend fun getAllBlogs(userId: String): List<Blog> = newSuspendedTransaction {
         Blog.find {
-            BlogTable.user eq userId
+            BlogTable.userId eq userId
         }.toList()
     }
 
@@ -54,5 +56,5 @@ class BlogDataSourceImpl : BlogDataSource {
             .firstOrNull()
     }
 
-    private fun findBlogOfUserExp(blogId: Int, userId: String) = (BlogTable.id eq blogId) and (BlogTable.user eq userId)
+    private fun findBlogOfUserExp(blogId: Int, userId: String) = (BlogTable.id eq blogId) and (BlogTable.userId eq userId)
 }

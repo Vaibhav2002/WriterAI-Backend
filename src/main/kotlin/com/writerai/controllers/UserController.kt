@@ -17,7 +17,7 @@ class UserController(private val repo: UserRepo) {
     suspend fun findUser(id: String?, email: String? = null) = when {
         id.isNullOrEmpty() && email.isNullOrEmpty() -> Response.Error("Either pass id or email")
         !id.isNullOrEmpty() && !email.isNullOrEmpty() -> Response.Error("Only 1 from id or email should be passed")
-        !id.isNullOrEmpty() -> repo.getUserById(id)
+        !id.isNullOrEmpty() -> repo.getUserById(id).mapToResponse()
         else -> repo.getUserByEmail(email!!).mapToResponse()
     }
 

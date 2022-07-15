@@ -13,7 +13,7 @@ class Blog(id: EntityID<Int>) : IntEntity(id), Model<BlogResponse> {
     var description by BlogTable.description
     var content by BlogTable.content
     var timeStamp by BlogTable.timeStamp
-    var user by User referencedOn BlogTable.user
+    var userId by BlogTable.userId
 
     override fun toResponse() = BlogResponse(
         id = id.value,
@@ -21,6 +21,6 @@ class Blog(id: EntityID<Int>) : IntEntity(id), Model<BlogResponse> {
         description = description,
         content = content,
         timeStamp = timeStamp,
-        userId = user.id.value
+        userId = userId
     )
 }

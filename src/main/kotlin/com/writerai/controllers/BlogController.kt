@@ -28,11 +28,9 @@ class BlogController(private val repo: BlogRepo) {
         if (userId.isNullOrEmpty() || blogId == null) Response.Error(ALL_EMPTY)
         else repo.deleteBlog(userId, blogId)
 
-    suspend fun getAllBlogs(userId: String?) = if (userId.isNullOrEmpty())
-        Response.Error(USER_ID_EMPTY)
-    else repo.getAllBlogs(userId).mapTo { blogs-> blogs.map { it.toResponse() } }
-
-    suspend fun getBlog(userId: String?, blogId: Int?) = if (userId.isNullOrEmpty() || blogId == null)
-        Response.Error(ALL_EMPTY)
-    else repo.getBlog(userId, blogId).mapToResponse()
+    suspend fun getBlog(userId: String?, blogId: Int?) = when{
+        userId.isNullOrEmpty() -> Response.Error(USER_ID_EMPTY)
+        blogId == null -> repo.getAllBlogs(userId).mapTo { blogs-> blogs.map { it.toResponse() } }
+        else -> repo.getBlog(userId, blogId).mapToResponse()
+    }
 }

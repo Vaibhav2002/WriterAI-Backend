@@ -19,7 +19,6 @@ fun Route.blogRoutes() {
             updateBlog(controller)
             deleteBlog(controller)
             getBlog(controller)
-            getAllBlogs(controller)
         }
     }
 }
@@ -28,7 +27,7 @@ fun Route.insertBlog(controller: BlogController) = post("/insert") {
     val userId = call.principal<FirebaseUserPrincipal>()?.uid
     val blog = call.receive<BlogRequest>()
     controller.insertBlog(userId, blog).also {
-        call.respond(it.httpStatusCode, it)
+        call.respond(it.httpStatusCode, it.serialize())
     }
 }
 
@@ -37,7 +36,7 @@ fun Route.updateBlog(controller: BlogController) = put("/update") {
     val blogId = call.request.queryParameters["blogId"]?.toIntOrNull()
     val blog = call.receive<BlogRequest>()
     controller.updateBlog(userId, blogId, blog).also {
-        call.respond(it.httpStatusCode, it)
+        call.respond(it.httpStatusCode, it.serialize())
     }
 }
 
@@ -45,7 +44,7 @@ fun Route.deleteBlog(controller: BlogController) = delete("/delete") {
     val userId = call.principal<FirebaseUserPrincipal>()?.uid
     val blogId = call.request.queryParameters["blogId"]?.toIntOrNull()
     controller.deleteBlog(userId, blogId).also {
-        call.respond(it.httpStatusCode, it)
+        call.respond(it.httpStatusCode, it.serialize())
     }
 }
 
@@ -53,13 +52,6 @@ fun Route.getBlog(controller: BlogController) = get("/getBlog") {
     val userId = call.principal<FirebaseUserPrincipal>()?.uid
     val blogId = call.request.queryParameters["blogId"]?.toIntOrNull()
     controller.getBlog(userId, blogId).also {
-        call.respond(it.httpStatusCode, it)
-    }
-}
-
-fun Route.getAllBlogs(controller: BlogController) = get("/getBlog") {
-    val userId = call.principal<FirebaseUserPrincipal>()?.uid
-    controller.getAllBlogs(userId).also {
-        call.respond(it.httpStatusCode, it)
+        call.respond(it.httpStatusCode, it.serialize())
     }
 }
