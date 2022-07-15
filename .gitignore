@@ -34,5 +34,4 @@ out/
 
 ### VS Code ###
 .vscode/
-/src/main/kotlin/com/writerai/data/db/DatabaseSecrets.kt
 /src/main/resources/service-acc-file.json
