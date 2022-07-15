@@ -7,7 +7,7 @@ object DatabaseConfig {
     private lateinit var username: String
     private lateinit var password: String
 
-    fun init(url:String, username:String, password:String){
+    fun init(url: String, username: String, password: String) {
         this.url = url
         this.username = username
         this.password = password

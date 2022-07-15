@@ -17,8 +17,13 @@ fun Application.configureAuthentication() {
         firebase(FIREBASE_AUTH) {
             validate { credential ->
                 println(credential.uid)
-                if(userRepo.getUserById(credential.uid) is Response.Error){
-                    challenge {respond(HttpStatusCode.Unauthorized, Response.Error<Unit>("User does not exist").serialize()) }
+                if (userRepo.getUserById(credential.uid) is Response.Error) {
+                    challenge {
+                        respond(
+                            HttpStatusCode.Unauthorized,
+                            Response.Error<Unit>("User does not exist").serialize()
+                        )
+                    }
                     return@validate null
                 }
                 FirebaseUserPrincipal(

@@ -56,5 +56,6 @@ class BlogDataSourceImpl : BlogDataSource {
             .firstOrNull()
     }
 
-    private fun findBlogOfUserExp(blogId: Int, userId: String) = (BlogTable.id eq blogId) and (BlogTable.userId eq userId)
+    private fun findBlogOfUserExp(blogId: Int, userId: String) =
+        (BlogTable.id eq blogId) and (BlogTable.userId eq userId)
 }

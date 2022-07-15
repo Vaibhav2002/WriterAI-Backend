@@ -17,7 +17,7 @@ fun Application.module() {
     configureMonitoring()
 }
 
-private fun Application.configureDatabase(){
+private fun Application.configureDatabase() {
     val url = environment.config.property("ktor.database.url").getString()
     val username = environment.config.property("ktor.database.username").getString()
     val password = environment.config.property("ktor.database.password").getString()
