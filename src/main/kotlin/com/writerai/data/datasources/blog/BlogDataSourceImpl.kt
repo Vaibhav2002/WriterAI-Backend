@@ -26,6 +26,7 @@ class BlogDataSourceImpl : BlogDataSource {
             description = blogRequest.description
             content = blogRequest.content
             timeStamp = blogRequest.timeStamp
+            coverPic = blogRequest.coverImage
             this.userId = userId
         }
     }
@@ -35,6 +36,7 @@ class BlogDataSourceImpl : BlogDataSource {
             content = blogRequest.content
             title = blogRequest.title
             description = blogRequest.description
+            coverPic = blogRequest.coverImage
         }
         blog
     }

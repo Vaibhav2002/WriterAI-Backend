@@ -14,6 +14,7 @@ class Blog(id: EntityID<Int>) : IntEntity(id), Model<BlogResponse> {
     var content by BlogTable.content
     var timeStamp by BlogTable.timeStamp
     var userId by BlogTable.userId
+    var coverPic by BlogTable.coverPic
 
     override fun toResponse() = BlogResponse(
         id = id.value,
@@ -21,6 +22,7 @@ class Blog(id: EntityID<Int>) : IntEntity(id), Model<BlogResponse> {
         description = description,
         content = content,
         timeStamp = timeStamp,
+        coverPic = coverPic,
         userId = userId
     )
 }

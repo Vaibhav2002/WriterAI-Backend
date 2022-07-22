@@ -7,5 +7,6 @@ data class BlogResponse(
     val description: String,
     val content: String,
     val timeStamp: Long,
+    val coverPic:String,
     val userId: String
 )
