@@ -17,6 +17,13 @@ class UserDataSourceImpl : UserDataSource {
         User.new(id) {
             this.username = username
             this.email = email
+            this.totalApiReqMade = 0
+        }
+    }
+
+    override suspend fun increaseUserApiReq(id: String, incBy: Int): User? = newSuspendedTransaction {
+        User.findById(id)?.apply {
+            totalApiReqMade += incBy
         }
     }
 

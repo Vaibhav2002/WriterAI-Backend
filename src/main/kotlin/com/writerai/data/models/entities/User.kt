@@ -11,9 +11,10 @@ class User(id: EntityID<String>) : Entity<String>(id), Model<UserResponse> {
 
     var username by UserTable.username
     var email by UserTable.email
+    var totalApiReqMade by UserTable.totalApiReqMade
 
     override fun toResponse() = UserResponse(
         id = id._value.toString(),
-        username, email
+        username, email, totalApiReqMade
     )
 }

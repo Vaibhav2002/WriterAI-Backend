@@ -18,6 +18,12 @@ class UserRepo(private val userDataSource: UserDataSource) {
         } ?: Response.Error("User does not exist")
     }
 
+    suspend fun increaseUserApiReq(id: String) = safeCall {
+        userDataSource.increaseUserApiReq(id, 1)?.let {
+            Response.Success(it, "User Api Req Count updated")
+        } ?: Response.Error("User does not exist")
+    }
+
     suspend fun getUserByEmail(email: String): Response<User> = safeCall {
         userDataSource.getUserByEmail(email)?.let {
             Response.Success(it, "User fetched successfully")

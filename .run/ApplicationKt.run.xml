@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ApplicationKt" type="JetRunConfigurationType" nameIsGenerated="true">
+    <envs>
+      <env name="DB_PASSWORD" value="pscale_pw_pzO4NdCYMSqAYgCuVHoyQILl12NQDPBBx04kNxJW1Ac" />
+      <env name="DB_URL" value="jdbc:mysql://qmbvsvfqna3v.ap-south-2.psdb.cloud/writerai?sslMode=VERIFY_IDENTITY" />
+      <env name="DB_USERNAME" value="edzymjkvnqc7" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.writerai.ApplicationKt" />
+    <module name="com.writerai.app.main" />
+    <shortenClasspath name="NONE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

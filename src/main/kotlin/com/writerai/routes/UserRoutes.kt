@@ -16,6 +16,7 @@ fun Route.userRoutes() {
         getUser(controller)
         deleteUser(controller)
         getAllUsers(controller)
+        increaseUserApiCount(controller)
     }
 }
 
@@ -33,6 +34,14 @@ private fun Route.getUser(controller: UserController) = authenticate(FIREBASE_AU
     get("/getUser") {
         val userId = call.principal<FirebaseUserPrincipal>()?.uid ?: return@get
         val response = controller.findUser(userId)
+        call.respond(response.httpStatusCode, response.serialize())
+    }
+}
+
+private fun Route.increaseUserApiCount(controller: UserController) = authenticate(FIREBASE_AUTH) {
+    put("/updateApiCount") {
+        val userId = call.principal<FirebaseUserPrincipal>()?.uid ?: return@put
+        val response = controller.incUserApiReqCount(userId)
         call.respond(response.httpStatusCode, response.serialize())
     }
 }

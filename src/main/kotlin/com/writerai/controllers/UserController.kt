@@ -21,6 +21,9 @@ class UserController(private val repo: UserRepo) {
         else -> repo.getUserByEmail(email!!).mapToResponse()
     }
 
+    suspend fun incUserApiReqCount(id:String?) = if (id.isNullOrEmpty())
+        Response.Error("Id cannot be empty")
+    else repo.increaseUserApiReq(id).mapToResponse()
 
     suspend fun deleteUser(id: String?) = if (id.isNullOrEmpty())
         Response.Error("Id cannot be empty")
