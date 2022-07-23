@@ -7,5 +7,5 @@ object ShareTable : IntIdTable() {
     val ownerId: Column<String> = varchar("ownerId", 50)
     val sharedTo: Column<String> = varchar("sharedTo", 50)
     val sharedToEmail:Column<String> = varchar("sharedToEmail", 50)
-    val blogId: Column<Int> = integer("blogId")
+    val projectId: Column<Int> = integer("projectId")
 }

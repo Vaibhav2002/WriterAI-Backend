@@ -9,9 +9,9 @@ interface SharedToDataSource {
 
     suspend fun getSharedToMe(userId: String): List<SharedTo>
 
-    suspend fun shareTo(ownerId: String, toUser: User, blogId: Int): SharedTo
+    suspend fun shareTo(ownerId: String, toUser: User, projectId: Int): SharedTo
 
     suspend fun removeShare(userId: String, id: Int): SharedTo?
 
-    suspend fun getSharersOfBlog(userId: String, blogId: Int): List<SharedTo>
+    suspend fun getSharersOfProject(userId: String, projectId: Int): List<SharedTo>
 }

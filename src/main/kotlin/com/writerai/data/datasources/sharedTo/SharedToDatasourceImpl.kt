@@ -26,18 +26,18 @@ class SharedToDatasourceImpl : SharedToDataSource {
         }.toList()
     }
 
-    override suspend fun getSharersOfBlog(userId: String, blogId: Int): List<SharedTo> = newSuspendedTransaction {
+    override suspend fun getSharersOfProject(userId: String, projectId: Int): List<SharedTo> = newSuspendedTransaction {
         SharedTo.find {
-            (ShareTable.ownerId eq userId) and (ShareTable.blogId eq blogId)
+            (ShareTable.ownerId eq userId) and (ShareTable.projectId eq projectId)
         }.toList()
     }
 
-    override suspend fun shareTo(ownerId: String, toUser: User, blogId: Int): SharedTo = newSuspendedTransaction {
+    override suspend fun shareTo(ownerId: String, toUser: User, projectId: Int): SharedTo = newSuspendedTransaction {
         SharedTo.new {
             this.ownerId = ownerId
             this.sharedTo = toUser.id.value
             this.sharedToEmail = toUser.email
-            this.blogId = blogId
+            this.projectId = projectId
         }
     }
 

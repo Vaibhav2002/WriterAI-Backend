@@ -12,10 +12,10 @@ class SharedTo(id: EntityID<Int>) : IntEntity(id), Model<SharedToResponse> {
     var ownerId by ShareTable.ownerId
     var sharedTo by ShareTable.sharedTo
     var sharedToEmail by ShareTable.sharedToEmail
-    var blogId by ShareTable.blogId
+    var projectId by ShareTable.projectId
 
     override fun toResponse() = SharedToResponse(
-        blogId = blogId,
+        projectId = projectId,
         email = sharedToEmail,
         sharedId = id.value
     )

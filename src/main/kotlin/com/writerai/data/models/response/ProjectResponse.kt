@@ -3,7 +3,7 @@ package com.writerai.data.models.response
 import kotlinx.serialization.Transient
 
 @kotlinx.serialization.Serializable
-data class BlogResponse(
+data class ProjectResponse(
     val id: Int,
     val title: String,
     val description: String,
@@ -17,7 +17,7 @@ data class BlogResponse(
 @kotlinx.serialization.Serializable
 data class SharedToResponse(
     @Transient
-    val blogId: Int = 0,
+    val projectId: Int = 0,
     val email: String,
     val sharedId: Int
 )
