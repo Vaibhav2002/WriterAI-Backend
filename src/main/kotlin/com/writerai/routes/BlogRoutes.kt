@@ -19,6 +19,10 @@ fun Route.blogRoutes() {
             updateBlog(controller)
             deleteBlog(controller)
             getBlog(controller)
+            getBlogsSharedByMe(controller)
+            getBlogsSharedToMe(controller)
+            shareBlog(controller)
+            revokeShare(controller)
         }
     }
 }
@@ -52,6 +56,37 @@ fun Route.getBlog(controller: BlogController) = get("/getBlog") {
     val userId = call.principal<FirebaseUserPrincipal>()?.uid
     val blogId = call.request.queryParameters["blogId"]?.toIntOrNull()
     controller.getBlog(userId, blogId).also {
+        call.respond(it.httpStatusCode, it.serialize())
+    }
+}
+
+fun Route.getBlogsSharedByMe(controller: BlogController) = get("/getSharedByMe") {
+    val userId = call.principal<FirebaseUserPrincipal>()?.uid
+    controller.getBlogsSharedByMe(userId).also {
+        call.respond(it.httpStatusCode, it.serialize())
+    }
+}
+
+fun Route.getBlogsSharedToMe(controller: BlogController) = get("/getSharedToMe") {
+    val userId = call.principal<FirebaseUserPrincipal>()?.uid
+    controller.getBlogsSharedToMe(userId).also {
+        call.respond(it.httpStatusCode, it.serialize())
+    }
+}
+
+fun Route.shareBlog(controller: BlogController) = post("/share") {
+    val userId = call.principal<FirebaseUserPrincipal>()?.uid
+    val toEmail = call.request.queryParameters["toEmail"]
+    val blogId = call.request.queryParameters["blogId"]?.toIntOrNull()
+    controller.shareBlog(userId, toEmail, blogId).also {
+        call.respond(it.httpStatusCode, it.serialize())
+    }
+}
+
+fun Route.revokeShare(controller: BlogController) = post("/revokeShare") {
+    val userId = call.principal<FirebaseUserPrincipal>()?.uid
+    val shareId = call.request.queryParameters["shareId"]?.toIntOrNull()
+    controller.revokeShare(userId, shareId).also {
         call.respond(it.httpStatusCode, it.serialize())
     }
 }

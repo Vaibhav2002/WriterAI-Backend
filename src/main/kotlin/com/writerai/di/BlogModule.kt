@@ -12,8 +12,8 @@ val blogModule = module {
     }
 
     single {
-        BlogRepo(get())
+        BlogRepo(get(), get())
     }
 
-    single { BlogController(get()) }
+    single { BlogController(get(), get()) }
 }
