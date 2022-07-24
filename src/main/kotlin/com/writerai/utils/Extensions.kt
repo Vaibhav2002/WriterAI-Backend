@@ -4,7 +4,6 @@ import com.writerai.data.models.entities.Project
 import com.writerai.data.models.entities.User
 import com.writerai.data.models.response.Response
 
-
 suspend fun <T> safeCall(
     call: suspend () -> Response<T>
 ): Response<T> = try {
