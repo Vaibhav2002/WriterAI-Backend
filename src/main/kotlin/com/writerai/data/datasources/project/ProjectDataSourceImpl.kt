@@ -50,7 +50,7 @@ class ProjectDataSourceImpl : ProjectDataSource {
     override suspend fun getAllProjects(userId: String): List<Project> = newSuspendedTransaction {
         Project.find {
             ProjectTable.userId eq userId
-        }.toList()
+        }.toList().sortedByDescending { it.timeStamp }
     }
 
     override suspend fun getProject(userId: String, projectId: Int) = newSuspendedTransaction {

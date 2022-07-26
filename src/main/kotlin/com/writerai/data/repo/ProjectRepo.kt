@@ -77,6 +77,10 @@ class ProjectRepo(
             if (it == null)
                 return@safeCall Response.Error("Project does not exist")
         }
+        if(userId == toUser.id.value) return@safeCall Response.Error("Cannot share to self")
+        sharedToDataSource.getShare(userId, toUser, projectId)?.let {
+            return@safeCall Response.Error("Already shared")
+        }
         val response = sharedToDataSource.shareTo(userId, toUser, projectId).toResponse()
         Response.Success(response, "Project Shared Successfully")
     }

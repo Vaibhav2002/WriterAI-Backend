@@ -48,4 +48,10 @@ class SharedToDatasourceImpl : SharedToDataSource {
         sharedTo?.delete()
         sharedTo
     }
+
+    override suspend fun getShare(userId: String, toUser: User, projectId: Int): SharedTo? = newSuspendedTransaction {
+        SharedTo.find {
+            (ShareTable.ownerId eq userId) and (ShareTable.sharedTo eq toUser.id.value) and (ShareTable.projectId eq projectId)
+        }.firstOrNull()
+    }
 }

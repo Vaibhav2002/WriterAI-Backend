@@ -9,5 +9,7 @@ fun Application.configureCORS() {
         anyHost()
         allowHeaders { true }
         HttpMethod.DefaultMethods.forEach { httpMethod -> allowMethod(httpMethod) }
+        allowHeader(HttpHeaders.ContentType)
+        allowHeader(HttpHeaders.Authorization)
     }
 }
