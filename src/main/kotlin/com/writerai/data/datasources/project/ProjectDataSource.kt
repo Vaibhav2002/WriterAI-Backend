@@ -11,7 +11,9 @@ interface ProjectDataSource {
 
     suspend fun deleteProject(userId: String, projectId: Int): Project?
 
-    suspend fun getAllProjects(userId: String): List<Project>
+    suspend fun getAllProjectsOfUser(userId: String): List<Project>
+
+    suspend fun getAllProjects():List<Project>
 
     suspend fun getProject(userId: String, projectId: Int): Project?
 }

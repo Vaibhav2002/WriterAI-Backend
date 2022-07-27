@@ -31,15 +31,16 @@ class ProjectDataSourceImpl : ProjectDataSource {
         }
     }
 
-    override suspend fun updateProject(userId: String, projectId: Int, projectRequest: ProjectRequest) = newSuspendedTransaction {
-        val project = Project.find(findProjectOfUserExp(projectId, userId)).firstOrNull()?.apply {
-            content = projectRequest.content
-            title = projectRequest.title
-            description = projectRequest.description
-            coverPic = projectRequest.coverImage
+    override suspend fun updateProject(userId: String, projectId: Int, projectRequest: ProjectRequest) =
+        newSuspendedTransaction {
+            val project = Project.find(findProjectOfUserExp(projectId, userId)).firstOrNull()?.apply {
+                content = projectRequest.content
+                title = projectRequest.title
+                description = projectRequest.description
+                coverPic = projectRequest.coverImage
+            }
+            project
         }
-        project
-    }
 
     override suspend fun deleteProject(userId: String, projectId: Int) = newSuspendedTransaction {
         val project = Project.find(findProjectOfUserExp(projectId, userId)).firstOrNull()
@@ -47,10 +48,14 @@ class ProjectDataSourceImpl : ProjectDataSource {
         project
     }
 
-    override suspend fun getAllProjects(userId: String): List<Project> = newSuspendedTransaction {
+    override suspend fun getAllProjectsOfUser(userId: String): List<Project> = newSuspendedTransaction {
         Project.find {
             ProjectTable.userId eq userId
         }.toList().sortedByDescending { it.timeStamp }
+    }
+
+    override suspend fun getAllProjects(): List<Project> = newSuspendedTransaction {
+        Project.all().toList().sortedByDescending { it.timeStamp }
     }
 
     override suspend fun getProject(userId: String, projectId: Int) = newSuspendedTransaction {

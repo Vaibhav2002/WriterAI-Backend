@@ -43,7 +43,7 @@ class ProjectRepo(
 
     suspend fun getAllProjects(userId: String): Response<List<ProjectResponse>> = safeCall {
         val projectResponse = mergeProjectWithSharedTo(
-            dataSource.getAllProjects(userId),
+            dataSource.getAllProjectsOfUser(userId),
             sharedToDataSource.getSharedByMe(userId)
         )
         Response.Success(projectResponse, "All projects fetched successfully")
@@ -56,16 +56,16 @@ class ProjectRepo(
         } ?: Response.Error(BLOG_NOT_FOUND)
     }
 
-    suspend fun getProjectsSharedToMe(userId: String): Response<List<Project>> = safeCall {
+    suspend fun getProjectsSharedToMe(userId: String): Response<List<ProjectResponse>> = safeCall {
         val sharedToMe = sharedToDataSource.getSharedToMe(userId).map { it.projectId }
-        val projects = dataSource.getAllProjects(userId).filter { it.id.value in sharedToMe }
+        var projects = dataSource.getAllProjects().filter { it.id.value in sharedToMe }.map { it.toResponse() }
         Response.Success(projects, "Projects shared to me")
     }
 
     suspend fun getProjectsSharedByMe(userId: String): Response<List<ProjectResponse>> = safeCall {
         val sharedByMe = sharedToDataSource.getSharedByMe(userId)
         val sharedByMeIds = sharedByMe.map { it.projectId }
-        val projects = dataSource.getAllProjects(userId).filter { it.id.value in sharedByMeIds }
+        val projects = dataSource.getAllProjectsOfUser(userId).filter { it.id.value in sharedByMeIds }
         val projectResponse = mergeProjectWithSharedTo(
             projects, sharedByMe
         )
