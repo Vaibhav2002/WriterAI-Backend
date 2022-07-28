@@ -7,7 +7,7 @@ object ProjectTable : IntIdTable() {
     val userId: Column<String> = varchar("userId", 50)
     val title: Column<String> = varchar("title", 50)
     val description: Column<String> = varchar("description", 1000)
-    val content: Column<String> = varchar("content", 10000)
+    val content: Column<String> = text("content")
     val coverPic:Column<String> = varchar("coverPic", 500)
     val timeStamp: Column<Long> = long("timeStamp")
 }
