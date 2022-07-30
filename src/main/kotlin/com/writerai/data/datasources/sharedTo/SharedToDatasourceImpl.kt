@@ -26,9 +26,9 @@ class SharedToDatasourceImpl : SharedToDataSource {
         }.toList()
     }
 
-    override suspend fun getSharersOfProject(userId: String, projectId: Int): List<SharedTo> = newSuspendedTransaction {
+    override suspend fun getSharersOfProject(projectId: Int): List<SharedTo> = newSuspendedTransaction {
         SharedTo.find {
-            (ShareTable.ownerId eq userId) and (ShareTable.projectId eq projectId)
+            ShareTable.projectId eq projectId
         }.toList()
     }
 

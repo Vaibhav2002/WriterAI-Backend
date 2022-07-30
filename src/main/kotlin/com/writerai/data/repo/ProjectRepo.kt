@@ -30,9 +30,13 @@ class ProjectRepo(
         userId: String,
         projectId: Int, projectRequest: ProjectRequest
     ): Response<Project> = safeCall {
-        dataSource.updateProject(userId, projectId, projectRequest)?.let {
-            Response.Success(it, "Project updated successfully")
-        } ?: Response.Error(BLOG_NOT_FOUND)
+        val sharers = sharedToDataSource.getSharersOfProject(projectId)
+        sharers.find { it.sharedTo == userId }?.let {
+            dataSource.updateProject(it.ownerId, projectId, projectRequest)?.let {project->
+                Response.Success(project, "Project updated successfully")
+            } ?: Response.Error(BLOG_NOT_FOUND)
+        } ?: Response.Error("Not shared to this user")
+
     }
 
     suspend fun deleteProject(userId: String, projectId: Int): Response<Unit> = safeCall {
@@ -50,7 +54,7 @@ class ProjectRepo(
     }
 
     suspend fun getProject(userId: String, projectId: Int): Response<ProjectResponse> = safeCall {
-        val sharers = sharedToDataSource.getSharersOfProject(userId, projectId).map { it.toResponse() }
+        val sharers = sharedToDataSource.getSharersOfProject(projectId).map { it.toResponse() }
         dataSource.getProject(userId, projectId)?.let {
             Response.Success(it.toResponse(sharers), "Project fetched successfully")
         } ?: Response.Error(BLOG_NOT_FOUND)
@@ -58,7 +62,7 @@ class ProjectRepo(
 
     suspend fun getProjectsSharedToMe(userId: String): Response<List<ProjectResponse>> = safeCall {
         val sharedToMe = sharedToDataSource.getSharedToMe(userId).map { it.projectId }
-        var projects = dataSource.getAllProjects().filter { it.id.value in sharedToMe }.map { it.toResponse() }
+        val projects = dataSource.getAllProjects().filter { it.id.value in sharedToMe }.map { it.toResponse() }
         Response.Success(projects, "Projects shared to me")
     }
 

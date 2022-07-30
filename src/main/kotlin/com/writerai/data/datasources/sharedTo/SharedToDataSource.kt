@@ -13,7 +13,7 @@ interface SharedToDataSource {
 
     suspend fun removeShare(userId: String, id: Int): SharedTo?
 
-    suspend fun getSharersOfProject(userId: String, projectId: Int): List<SharedTo>
+    suspend fun getSharersOfProject(projectId: Int): List<SharedTo>
 
     suspend fun getShare(userId: String, toUser: User, projectId: Int):SharedTo?
 }
