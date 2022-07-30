@@ -4,7 +4,7 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.Column
 
 object ProjectTable : IntIdTable() {
-    val userId: Column<String> = varchar("userId", 50)
+    val userId: Column<String> = varchar("userId", 100)
     val title: Column<String> = varchar("title", 5000)
     val description: Column<String> = varchar("description", 5000)
     val content: Column<String> = text("content")
