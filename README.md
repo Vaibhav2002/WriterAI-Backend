@@ -165,7 +165,7 @@ object ShareTable : IntIdTable() {
 ## Available APIs [Backend] :computer:
 The backend of WriterAI provides many APIs to perform different operations such as insert user, getProjects, share Project, get all shared projects etc. All the available APIs and their corresponding routes can be found inside the routes folder.
 
-![](graphics/postman.png)
+![](graphics/postman.jpg)
 
 ## Attribution
 The project is deployed on [Linode](https://www.linode.com) for the [Hashnode X Linode Hackathon](https://townhall.hashnode.com/build-with-linode-hackathon-june-2022).
