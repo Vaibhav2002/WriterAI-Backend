@@ -29,11 +29,14 @@ class ProjectRepo(
     suspend fun updateProject(
         userId: String,
         projectId: Int, projectRequest: ProjectRequest
-    ): Response<Project> = safeCall {
+    ): Response<ProjectResponse> = safeCall {
         val sharers = sharedToDataSource.getSharersOfProject(projectId)
         sharers.find { it.sharedTo == userId }?.let {
-            dataSource.updateProject(it.ownerId, projectId, projectRequest)?.let {project->
-                Response.Success(project, "Project updated successfully")
+            dataSource.updateProject(it.ownerId, projectId, projectRequest)?.let { project ->
+                Response.Success(
+                    project.toResponse(sharers.map { it.toResponse() }),
+                    "Project updated successfully"
+                )
             } ?: Response.Error(BLOG_NOT_FOUND)
         } ?: Response.Error("Not shared to this user")
 
@@ -81,7 +84,7 @@ class ProjectRepo(
             if (it == null)
                 return@safeCall Response.Error("Project does not exist")
         }
-        if(userId == toUser.id.value) return@safeCall Response.Error("Cannot share to self")
+        if (userId == toUser.id.value) return@safeCall Response.Error("Cannot share to self")
         sharedToDataSource.getShare(userId, toUser, projectId)?.let {
             return@safeCall Response.Error("Already shared")
         }

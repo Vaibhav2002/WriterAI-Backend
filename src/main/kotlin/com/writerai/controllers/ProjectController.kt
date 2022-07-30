@@ -19,7 +19,7 @@ class ProjectController(private val repo: ProjectRepo, private val userRepo: Use
         userId: String?,
         projectId: Int?, projectRequest: ProjectRequest
     ) = withIds(userId, projectId) { userID, projectID ->
-        repo.updateProject(userID, projectID, projectRequest).mapToResponse()
+        repo.updateProject(userID, projectID, projectRequest)
     }
 
 
