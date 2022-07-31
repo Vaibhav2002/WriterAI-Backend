@@ -5,7 +5,7 @@
 
 <br/>
 
-**WriterAI** is an AI based content writing tool that helps users easily write high quality emails, blogs, letters, thesis and other stuff
+**WriterAI** is an AI based content-writing tool that helps users easily write high quality content. One can also share their projects with others, work as a team and have complete control over the final version. The platform has been built to assist people in meeting their writing needs by providing them with an "auto text-generation support" along with offering an inbuilt "markdown-supported text editor" to meet most of the authors' requirements.
 
 This project is developed by **Team 404** for Hashnode x PlanetScale hackathon. This team comprises of [Ishant](https://github.com/ishantchauhan710/) and [Vaibhav](https://github.com/Vaibhav2002).
 
@@ -18,7 +18,7 @@ To know more about how we built this project, read my article here: <br>
 ![](graphics/pojects.png)
 
 **WriterAI** is an AI based content writing tool that helps users easily write high quality emails, blogs, letters, thesis and other stuff. One can share their project with others and work as a team.
-[Here](https://youtu.be/m9J6BRdM-yo) is a short video on how to use WriterAI
+##### [Here](https://youtu.be/m9J6BRdM-yo) is a short video on how to use WriterAI
 
 ## Live Usage
 
