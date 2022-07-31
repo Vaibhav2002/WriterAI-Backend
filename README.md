@@ -127,6 +127,10 @@ The backend of WriterAI uses [***MVC (Model View Controller)***](https://en.wiki
 
 
 ### Database Schemas 
+
+#### This is how the Database relationhip looks like
+![DB Relationship](graphics/db_tables.jpeg)
+
 #### User Schema
 ```kotlin
 object UserTable : IdTable<String>() {
