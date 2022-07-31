@@ -1,6 +1,6 @@
 ![](graphics/0.png)
 
-# **WriterAI** 
+# **WriterAI** - A Revolutionary AI Based Content Writing Tool
 ## Use the Power of Artificial Intelligence to write high quality content
 
 <br/>
