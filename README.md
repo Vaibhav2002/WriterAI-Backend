@@ -7,8 +7,7 @@
 This project is developed by **Team 404** for Hashnode x PlanetScale hackathon. This team comprises of [Ishant](https://github.com/ishantchauhan710/) and [Vaibhav](https://github.com/Vaibhav2002).
 
 ## Blog :writing_hand:
-To know more about how we built this project, read my article here: <br>
-[https://ishantchauhan.hashnode.dev/WriterAI-securely-store-access-and-share-your-files-on-cloud](https://ishantchauhan.hashnode.dev/WriterAI-securely-store-access-and-share-your-files-on-cloud)
+To know more about how we built this project, read my [article](https://ishantchauhan.hashnode.dev/writerai-a-revolutionary-ai-based-content-writing-tool)
 
 ## About
 
