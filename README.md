@@ -2,7 +2,7 @@
 
 # **WriterAI** 
 
-**WriterAI** is an AI based content writing tool that helps users easily write high quality emails, blogs, letters, thesis and other stuff. One can also share their project with others and work as a team.
+**WriterAI** is an AI-based content writing tool that can turn your unstructured text into engaging content and generate up to 5 different paragraphs with an input of just 5 words! Using the power of artificial intelligence, this tool helps you write an engaging piece of content and end up with something professional. You can use it for writing emails, blogs, articles, letters, thesis and even e-books! It is completely free to use and open-source :)
 
 This project is developed by **Team 404** for Hashnode x PlanetScale hackathon. This team comprises of [Ishant](https://github.com/ishantchauhan710/) and [Vaibhav](https://github.com/Vaibhav2002).
 
