@@ -1,11 +1,8 @@
 ![](graphics/0.png)
 
-# **WriterAI** - A Revolutionary AI Based Content Writing Tool
-## Use the Power of Artificial Intelligence to write high quality content
+# **WriterAI** 
 
-<br/>
-
-**WriterAI** is an AI based content-writing tool that helps users easily write high quality content. One can also share their projects with others, work as a team and have complete control over the final version. The platform has been built to assist people in meeting their writing needs by providing them with an "auto text-generation support" along with offering an inbuilt "markdown-supported text editor" to meet most of the authors' requirements.
+**WriterAI** is an AI based content writing tool that helps users easily write high quality emails, blogs, letters, thesis and other stuff. One can also share their project with others and work as a team.
 
 This project is developed by **Team 404** for Hashnode x PlanetScale hackathon. This team comprises of [Ishant](https://github.com/ishantchauhan710/) and [Vaibhav](https://github.com/Vaibhav2002).
 
@@ -48,49 +45,48 @@ You can experience the power of WriterAI from [here](https://writerai.netlify.ap
 
 
 ### Setup [Backend]
-To set up the backend of this project, you will need a cloud hosting service provider like Linode, Digital Ocean or Amazon Web Services. Once you get the account, you need to configure a server where your backend will run on. For this project, I have used an ubuntu server however, you can go with any server you are comfortable with. Once you are done with this, follow the following steps to setup the backend of this project!
+To setup the backend of WriterAI,
 
-1. Install the following tools on your server: nodejs, npm, git, ufw, mongodb
-
-2. Configure the object storage provided by your hosting provider.
-
-3. Open the http and https port on your server using ufw
-
-4. Clone this repository and navigate to the root folder
-
-5. Create a file named ".env" and there, write:
+1. Clone this repository and open it in Intellij IDEA IDE
+2. Add the environment variables listed below
+3. Create an account on Linode and there, setup an ubuntu server using their docs
+4. Install java, nginx, ufw and certbot
+5. Open ports for http and https using ufw
+6. Set up NGINX by going through linode's docs. Ensure that it listens to 8080 port
+7. Enable SSL using certbot (You will be needing a domain for that)
+8. Now in Intellij IDEA, install shadowJar plugin and export the fat jar file
+9. Upload that jar file to linode using scp tool in linux from your local machine
+10. Then open your linode's terminal on your local machine using ssh
+11. Then type:
 
 ```
-MONGO_URL=mongodb://127.0.0.1:27017/WriterAI
-PORT=XXXX
-JWT_SECRET=XXXXXXXX
-STORAGE_ACCESS_KEY=XXXXXXXX
-STORAGE_SECRET_KEY=XXXXXXXX
-STORAGE_BUCKET=XXXXXXXX
-STORAGE_REGION=XXXXXXXX
-STORAGE_URL=XXXXXXXX
-ENCRYPTION_KEY=XXXXXXXX
-SIGNATURE_KEY=XXXXXXXX
+vim /etc/environment
 ```
 
-- Here, MONGO_URL is the url where your mongodb service will run on. Since we will be running it on the server itself and our nodejs server will communicate using it, we have assigned the localhost url to the MONGO_URL variable
+```
+12. Then in the file opened, type:
 
-- Assign any value to the PORT. It is the port on which your nodejs server will run on
+export DB_URL = planetscale-url
+export DB_USERNAME = planetscale-username
+export DB_PASSWORD = planetscale-password
+export PORT = 8080
+```
 
-- JWT_SECRET is the secret variable that will be used to encrypt the user passwords. You can assign it with any value you want
+13. Then press Ctrl+W to save and Ctrl+QA! to exit
+14. Then go back to root directory by writing cd ../../ and then in terminal, write:
 
-- STORAGE_ACCESS_KEY, STORAGE_SECRET_KEY, STORAGE_BUCKET, STORAGE_REGION and STORAGE_URL are the variables that refer to the object storage of your hosting. An object storage is the place where the actual files of the users will get stored. You can easily get their values by refering to your hosting provider's manual
+```
+source /etc/environment
+```
 
-- ENCRYPTION_KEY will be used to encrypt the files of the user. You can use a base 64 generator and assign it with any 32 bytes base64 value
+This will update the environment variables
 
-- SIGNATURE_KEY will be used to sign the encryption key. In encryption, a signature is a proof that the user has the private key which matches with some public key. You can use a base 64 generator and assign it with any 64 bytes base64 value
+15. Finally, start the server by going to the directory where you backend jar file is and writing:
+```
+java -jar your_backend_file.jar
+```
 
-6. Now, you need to somehow enable the your linux server to listen to the http/https requests and transfer them to your nodejs server's port. You can use a reverse proxy or any tool like nginx or apache to do so. However, for testing, you can simply open your nodejs port publically using ufw and make requests to that port!
-
-7. Install all the required packages to run the nodejs backend by writing "npm install" command in the root folder
-
-8. Finally start the nodejs backend server using "npm start" command
-
+### Server Configurations
 
 ![Linode](graphics/linode.png)
 
