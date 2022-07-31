@@ -17,8 +17,6 @@ To know more about how we built this project, read my article here: <br>
 
 **WriterAI** is an AI based content writing tool that helps users easily write high quality emails, blogs, letters, thesis and other stuff. One can share their project with others and work as a team.
 
-Here is a short [video](https://www.youtube.com/watch?v=z94j9FA-5oY) on WriterAI
-
 ## Live Usage
 
 You can experience the power of WriterAI from [here](https://writerai.netlify.app)
@@ -30,17 +28,18 @@ You can experience the power of WriterAI from [here](https://writerai.netlify.ap
 ![](graphics/4.png)
 ![](graphics/5.png)
 
-- **User Authentication** - Supports email based authentication
-- **File Uploading** - You can upload your files on WriterAI and access it from anywhere around the world.
-- **File Encryption** - Files stored on WriterAI are stored in encrypted format, so your privacy remains protected.
-- **File Sharing** - You can share the access of your files with other users.
-- **File Management** - You can create multiple folders to organize your files in the way you want.
-- **File Download** - You can download your files and save them locally for offline usage.
-- **File Search** - Enhanced file searching which can give results quickly.
+- **Auto Text Completion** - Generates up to 120 words with an input of just 5 words
+- **Inbuilt Text Editor** - For writing your blogs, emails, letters, e-books and other stuff
+- **Project Sharing** - You can share your project with unlimited number of users and work in teams
+- **Markdown Support** - You can add images, tables, hyperlinks and code snippets in your projects by using markdown syntax
+- **Project Download** - You can download your projects in JSON, XML and Markdown formats
+- **Platform Compatibility** - WriterAI is highly responsive and has been tested on the latest versions of Chrome, Safari and Opera Mini
+- **User Authentication** - Supports Email-Password authentication and Google Mail authentication
+- **User Authorization** - WriterAI keeps on validating the user's auth tokens every 5 minutes automatically in order to prevent any unauthorized access
 
 ## Technical details
 
-- The frontend of WriterAI is an android app which is written using Kotlin. It follows MVVM architecture, SOLID and MAD principles, and other best practices for clean and scalable code.
+- The frontend part is written using ReactJS.
 
 - The backend of WriterAI is built using the power of Ktor, Kotlin and PlanetScale! It follows MVC architecture, DRY and SOLID code principles. Currently, the backend part is deployed on Linode, which is a popular cloud service provider platform for deploying your backend and database!
 
@@ -106,7 +105,12 @@ The backend of WriterAI uses [***MVC (Model View Controller)***](https://en.wiki
 
 ![](https://miro.medium.com/max/1018/1*Bls-krmgBxDrULOoBwRNUA.png)
 
+#### This is how the API flow works
+![Api Flow](graphics/api_flow.jpg)
+
 ## Package Structure [Backend] :open_file_folder:
+
+![Package Structure](graphics/package_structure.jpg)
 
     main                # Root Directory
     .
