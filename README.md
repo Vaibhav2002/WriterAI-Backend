@@ -112,7 +112,7 @@ The backend of WriterAI uses [***MVC (Model View Controller)***](https://en.wiki
 
 ![Package Structure](graphics/package_structure.jpg)
 
-    main                # Root Directory
+    main                            # Root Directory
     .
     ├── kotlin.com.writerai         # Contains all the Ktor server code
     |   ├── data                    # Contains all the data handling code, which includes Database, DataSources, Repositories, Data models and Response models
