@@ -21,11 +21,10 @@ To know more about how we built this project, read my [article](https://ishantch
 You can experience the power of WriterAI from [here](https://writerai.netlify.app)
 
 ## WriterAI Features
-
-![](graphics/2.png)
-![](graphics/3.png)
-![](graphics/4.png)
-![](graphics/5.png)
+|   |   | 
+|---|---|
+|![](graphics/2.png)| ![](graphics/3.png)
+|![](graphics/4.png)| ![](graphics/5.png)
 
 - **Auto Text Completion** - Generates up to 120 words with an input of just 5 words
 - **Inbuilt Text Editor** - For writing your blogs, emails, letters, e-books and other stuff
