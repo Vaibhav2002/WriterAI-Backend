@@ -15,7 +15,10 @@ To know more about how we built this project, read my article here: <br>
 
 ## About
 
+![](graphics/pojects.png)
+
 **WriterAI** is an AI based content writing tool that helps users easily write high quality emails, blogs, letters, thesis and other stuff. One can share their project with others and work as a team.
+[Here](https://youtu.be/m9J6BRdM-yo) is a short video on how to use WriterAI
 
 ## Live Usage
 
@@ -44,7 +47,7 @@ You can experience the power of WriterAI from [here](https://writerai.netlify.ap
 - The backend of WriterAI is built using the power of Ktor, Kotlin and PlanetScale! It follows MVC architecture, DRY and SOLID code principles. Currently, the backend part is deployed on Linode, which is a popular cloud service provider platform for deploying your backend and database!
 
 
-## Setup [Backend]
+### Setup [Backend]
 To set up the backend of this project, you will need a cloud hosting service provider like Linode, Digital Ocean or Amazon Web Services. Once you get the account, you need to configure a server where your backend will run on. For this project, I have used an ubuntu server however, you can go with any server you are comfortable with. Once you are done with this, follow the following steps to setup the backend of this project!
 
 1. Install the following tools on your server: nodejs, npm, git, ufw, mongodb
@@ -91,7 +94,7 @@ SIGNATURE_KEY=XXXXXXXX
 
 ![Linode](graphics/linode.png)
 
-## Built With [Backend] 🛠
+### Built With [Backend] 🛠
 * [Linode](https://linode.com) - Linode is a popular cloud hosting service provider where you can deploy your backend
 * [Ktor](https://ktor.io) - Create asynchronous client and server applications using the power of Kotlin.
 * [Kotlin](https://kotlinlang.org) - A modern programming language that makes developers happier.
@@ -100,7 +103,7 @@ SIGNATURE_KEY=XXXXXXXX
 * [Koin](https://insert-koin.io) - Koin is a smart Kotlin dependency injection library.
 * [Firebase](https://firebase.google.com) - Uses Firebase Admin SDK for authenticating and validate user's JWT auth token.
 
-## Architecture [Backend]
+### Architecture [Backend]
 The backend of WriterAI uses [***MVC (Model View Controller)***](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture.
 
 ![](https://miro.medium.com/max/1018/1*Bls-krmgBxDrULOoBwRNUA.png)
@@ -108,7 +111,7 @@ The backend of WriterAI uses [***MVC (Model View Controller)***](https://en.wiki
 #### This is how the API flow works
 ![Api Flow](graphics/api_flow.jpg)
 
-## Package Structure [Backend] :open_file_folder:
+### Package Structure [Backend] :open_file_folder:
 
 ![Package Structure](graphics/package_structure.jpg)
 
@@ -125,7 +128,7 @@ The backend of WriterAI uses [***MVC (Model View Controller)***](https://en.wiki
     └── resources                   # Contains all the configurations required to run the Ktor Server
 
 
-## Database Schemas 
+### Database Schemas 
 #### User Schema
 ```kotlin
 object UserTable : IdTable<String>() {
@@ -157,7 +160,7 @@ object ShareTable : IntIdTable() {
 }
 ```
 
-## Available APIs [Backend] :computer:
+### Available APIs [Backend] :computer:
 The backend of WriterAI provides many APIs to perform different operations such as insert user, getProjects, share Project, get all shared projects etc. All the available APIs and their corresponding routes can be found inside the routes folder.
 
 ![](graphics/postman.jpg)
