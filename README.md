@@ -81,7 +81,7 @@ source /etc/environment
 
 This will update the environment variables
 
-15. Lastly, setup a firebase account and add its firebase config json file in resource folder. Ensure that you need to use the same file for frontend part as well
+15. Lastly, setup a firebase account and setup up Firebase ADMIN SDK by following [this](https://firebase.google.com/docs/admin/setup#initialize-sdk) and paste the config json file in resource folder. Ensure that you need to use the same file for frontend part as well
 
 16. Finally, start the server by going to the directory where you backend jar file is and writing:
 ```
