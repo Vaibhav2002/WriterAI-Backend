@@ -4,6 +4,6 @@ data class ProjectRequest(
     val title: String,
     val description: String,
     val content: String,
-    val coverImage:String,
+    val coverPic:String,
     val timeStamp: Long
 )

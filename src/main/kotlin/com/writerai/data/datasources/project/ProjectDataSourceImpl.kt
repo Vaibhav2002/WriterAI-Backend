@@ -26,7 +26,7 @@ class ProjectDataSourceImpl : ProjectDataSource {
             description = projectRequest.description
             content = projectRequest.content
             timeStamp = projectRequest.timeStamp
-            coverPic = projectRequest.coverImage
+            coverPic = projectRequest.coverPic
             this.userId = userId
         }
     }
@@ -37,7 +37,7 @@ class ProjectDataSourceImpl : ProjectDataSource {
                 content = projectRequest.content
                 title = projectRequest.title
                 description = projectRequest.description
-                coverPic = projectRequest.coverImage
+                coverPic = projectRequest.coverPic
             }
             project
         }
