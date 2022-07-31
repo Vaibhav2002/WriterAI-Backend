@@ -39,7 +39,7 @@ You can experience the power of WriterAI from [here](https://writerai.netlify.ap
 
 ## Technical details
 
-- The frontend part is written using ReactJS.
+- The frontend of WriterAI is created using technologies like CSS, ReactJS and MaterialUI. WriterAI is highly responsive and is tested on all popular browsers like Chrome, Safari and Opera Mini. For handling the react state\s, ContextAPI is used. The frontend code is highly structured and BEM convention is followed throughout the entire CSS code.
 
 - The backend of WriterAI is built using the power of Ktor, Kotlin and PlanetScale! It follows MVC architecture, DRY and SOLID code principles. Currently, the backend part is deployed on Linode, which is a popular cloud service provider platform for deploying your backend and database!
 
@@ -81,7 +81,9 @@ source /etc/environment
 
 This will update the environment variables
 
-15. Finally, start the server by going to the directory where you backend jar file is and writing:
+15. Lastly, setup a firebase account and add its firebase config json file in resource folder. Ensure that you need to use the same file for frontend part as well
+
+16. Finally, start the server by going to the directory where you backend jar file is and writing:
 ```
 java -jar your_backend_file.jar
 ```
