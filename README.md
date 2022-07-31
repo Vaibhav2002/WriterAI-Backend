@@ -1,4 +1,4 @@
-![](graphics/graphicA.png)
+![](graphics/0.png)
 
 # **WriterAI** 
 ## Use the Power of Artificial Intelligence to write high quality content
@@ -25,6 +25,11 @@ You can experience the power of WriterAI from [here](https://writerai.netlify.ap
 
 ## WriterAI Features
 
+![](graphics/2.png)
+![](graphics/3.png)
+![](graphics/4.png)
+![](graphics/5.png)
+
 - **User Authentication** - Supports email based authentication
 - **File Uploading** - You can upload your files on WriterAI and access it from anywhere around the world.
 - **File Encryption** - Files stored on WriterAI are stored in encrypted format, so your privacy remains protected.
@@ -38,20 +43,6 @@ You can experience the power of WriterAI from [here](https://writerai.netlify.ap
 - The frontend of WriterAI is an android app which is written using Kotlin. It follows MVVM architecture, SOLID and MAD principles, and other best practices for clean and scalable code.
 
 - The backend of WriterAI is built using the power of Ktor, Kotlin and PlanetScale! It follows MVC architecture, DRY and SOLID code principles. Currently, the backend part is deployed on Linode, which is a popular cloud service provider platform for deploying your backend and database!
-
-## 📸 Screenshots
-
-[//]: # (|   |   |   |)
-
-[//]: # (|---|---|---|)
-
-[//]: # (|![]&#40;graphics/screenshots/getting_started.jpg&#41;| ![]&#40;graphics/screenshots/login.jpg&#41; | ![]&#40;graphics/screenshots/register.jpg&#41;)
-
-[//]: # (|![]&#40;graphics/screenshots/home.jpg&#41; | ![]&#40;graphics/screenshots/document.jpg&#41; |![]&#40;graphics/screenshots/shared_to_me.jpg&#41;)
-
-[//]: # (|![]&#40;graphics/screenshots/shared_by_you.jpg&#41;|![]&#40;graphics/screenshots/profile.jpg&#41; | ![]&#40;graphics/screenshots/about_us.jpg&#41;)
-
-[//]: # (|![]&#40;graphics/screenshots/videos.jpg&#41; | ![]&#40;graphics/screenshots/documents_2.jpg&#41; | ![]&#40;graphics/screenshots/splash.jpg&#41;)
 
 
 ## Setup [Backend]
@@ -99,7 +90,7 @@ SIGNATURE_KEY=XXXXXXXX
 8. Finally start the nodejs backend server using "npm start" command
 
 
-<img src="graphics/linode.png" style="width: 100%;" />
+![Linode](graphics/linode.png)
 
 ## Built With [Backend] 🛠
 * [Linode](https://linode.com) - Linode is a popular cloud hosting service provider where you can deploy your backend
@@ -168,7 +159,7 @@ The backend of WriterAI provides many APIs to perform different operations such 
 ![](graphics/postman.jpg)
 
 ## Attribution
-The project is deployed on [Linode](https://www.linode.com) for the [Hashnode X Linode Hackathon](https://townhall.hashnode.com/build-with-linode-hackathon-june-2022).
+The project uses [PlanetScale](https://planetscale.com) as its database and is made for the [Hashnode X PlanetScale Hackathon](https://townhall.hashnode.com/planetscale-hackathon).
 
 ## Contact
 For any queries, you can [connect with me](https://vaibhavjaiswal.vercel.app/#/)
