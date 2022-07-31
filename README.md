@@ -18,7 +18,7 @@ To know more about how we built this project, read my article here: <br>
 ![](graphics/pojects.png)
 
 **WriterAI** is an AI based content writing tool that helps users easily write high quality emails, blogs, letters, thesis and other stuff. One can share their project with others and work as a team.
-##### [Here](https://youtu.be/m9J6BRdM-yo) is a short video on how to use WriterAI
+#### [Here](https://youtu.be/m9J6BRdM-yo) is a short video on how to use WriterAI
 
 ## Live Usage
 
