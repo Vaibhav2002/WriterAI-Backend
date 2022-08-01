@@ -46,7 +46,7 @@ You can experience the power of WriterAI from [here](https://writerai.netlify.ap
 To setup the backend of WriterAI,
 
 1. Clone this repository and open it in Intellij IDEA IDE
-2. Add the environment variables listed below
+2. Create an account on PlanetScale and get the DB URL, USERNAME and PASSWORD
 3. Create an account on Linode and there, setup an ubuntu server using their docs
 4. Install java, nginx, ufw and certbot
 5. Open ports for http and https using ufw
