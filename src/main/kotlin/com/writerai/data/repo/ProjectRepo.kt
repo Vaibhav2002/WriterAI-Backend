@@ -31,15 +31,26 @@ class ProjectRepo(
         projectId: Int, projectRequest: ProjectRequest
     ): Response<ProjectResponse> = safeCall {
         val sharers = sharedToDataSource.getSharersOfProject(projectId)
-        sharers.find { it.sharedTo == userId }?.let {
-            dataSource.updateProject(it.ownerId, projectId, projectRequest)?.let { project ->
-                Response.Success(
-                    project.toResponse(sharers.map { it.toResponse() }),
-                    "Project updated successfully"
-                )
-            } ?: Response.Error(BLOG_NOT_FOUND)
+        dataSource.getProject(userId, projectId)?.let {
+            return@safeCall update(userId, projectId, sharers, projectRequest)
+        }
+        sharers.find { it.sharedTo == userId}?.let {
+            update(it.ownerId, projectId, sharers, projectRequest)
         } ?: Response.Error("Not shared to this user")
+    }
 
+    private suspend fun update(
+        ownerId: String,
+        projectId: Int,
+        sharers: List<SharedTo>,
+        projectRequest: ProjectRequest
+    ): Response<ProjectResponse> {
+        return dataSource.updateProject(ownerId, projectId, projectRequest)?.let { project ->
+            Response.Success(
+                project.toResponse(sharers.map { it.toResponse() }),
+                "Project updated successfully"
+            )
+        } ?: Response.Error(BLOG_NOT_FOUND)
     }
 
     suspend fun deleteProject(userId: String, projectId: Int): Response<Unit> = safeCall {
